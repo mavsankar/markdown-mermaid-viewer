@@ -11,7 +11,6 @@ A delightful Visual Studio Code extension that automatically renders Mermaid dia
 ## ✨ Features
 
 - 🪄 **Automatic Rendering**: Mermaid diagrams appear seamlessly in your Markdown preview
-- 🌙☀️ **Theme Integration**: Adapts to your VS Code light and dark themes
 - ⚡ **Live Updates**: Diagrams refresh instantly as you edit your content
 - 🛡️ **Error Handling**: Provides helpful error messages for invalid syntax
 - 🎭 **Zero Configuration**: Just install and start using immediately
