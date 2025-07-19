@@ -41,6 +41,7 @@
       "./media/mermaid.css"
     ],
     "markdown.previewScripts": [
+      "./media/mermaid.min.js",
       "./media/mermaid-preview.js"
     ],
     "markdown.markdownItPlugins": true

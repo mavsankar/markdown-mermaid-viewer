@@ -2,16 +2,27 @@
 (function() {
     console.log('Mermaid preview script loaded!');
     
-    // Load Mermaid from CDN
-    const script = document.createElement('script');
-    script.src = 'https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js';
-    script.onload = function() {
-        console.log('Mermaid library loaded successfully!');
+    // Since Mermaid is loaded via package.json previewScripts, we can use it directly
+    function initializeMermaid() {
+        console.log('Initializing Mermaid library...');
         
+        // Debug theme detection
+        const themeKind = document.body.getAttribute('data-vscode-theme-kind');
+        
+        // Determine the theme
+        let selectedTheme;
+        if (themeKind === 'vscode-dark') {
+            selectedTheme = 'dark';
+        } else if (themeKind === 'vscode-high-contrast') {
+            selectedTheme = 'base';
+        } else {
+            selectedTheme = 'default';
+        }
+                
         // Initialize Mermaid with VS Code theme support
         mermaid.initialize({
             startOnLoad: false,
-            theme: document.body.getAttribute('data-vscode-theme-kind') === 'vscode-dark' ? 'dark' : 'default',
+            theme: selectedTheme,
             securityLevel: 'loose',
             fontFamily: 'var(--vscode-font-family)',
             fontSize: 14,
@@ -185,7 +196,26 @@
         
         // Re-render when theme changes
         window.addEventListener('vscode-theme-changed', async function() {
-            const newTheme = document.body.getAttribute('data-vscode-theme-kind') === 'vscode-dark' ? 'dark' : 'default';
+            console.log('🎨 Theme changed event triggered!');
+            
+            const themeKind = document.body.getAttribute('data-vscode-theme-kind');
+            const themeId = document.body.getAttribute('data-vscode-theme-id');
+            
+            console.log('🎨 Theme Change Debug:');
+            console.log('  - data-vscode-theme-kind:', themeKind);
+            console.log('  - data-vscode-theme-id:', themeId);
+            
+            let newTheme;
+            if (themeKind === 'vscode-dark') {
+                newTheme = 'dark';
+            } else if (themeKind === 'vscode-high-contrast') {
+                newTheme = 'base';
+            } else {
+                newTheme = 'default';
+            }
+            
+            console.log('  - New Mermaid theme:', newTheme);
+            
             mermaid.initialize({
                 startOnLoad: false,
                 theme: newTheme,
@@ -200,11 +230,22 @@
             });
             await renderMermaidDiagrams();
         });
-    };
+    }
     
-    script.onerror = function() {
-        console.error('Failed to load Mermaid library from CDN');
-    };
+    // Initialize when Mermaid is available
+    function tryInitialize() {
+        if (typeof mermaid !== 'undefined') {
+            initializeMermaid();
+        } else {
+            console.log('Mermaid not yet loaded, waiting...');
+            setTimeout(tryInitialize, 100);
+        }
+    }
     
-    document.head.appendChild(script);
+    // Start initialization
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', tryInitialize);
+    } else {
+        tryInitialize();
+    }
 })();
