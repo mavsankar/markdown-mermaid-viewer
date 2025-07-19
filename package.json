@@ -1,0 +1,63 @@
+{
+  "name": "markdown-mermaid-viewer",
+  "displayName": "Markdown Mermaid Viewer",
+  "description": "Automatically render Mermaid diagrams in Markdown preview",
+  "version": "0.0.2",
+  "publisher": "SankarMantripragada",
+  "license": "MIT",
+  "icon": "icon.png",
+  "qna": "marketplace",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mavsankar/markdown-mermaid-viewer.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mavsankar/markdown-mermaid-viewer/issues"
+  },
+  "homepage": "https://github.com/mavsankar/markdown-mermaid-viewer/vsc-extension-quickstart.md",
+  "keywords": [
+    "markdown",
+    "mermaid",
+    "diagrams",
+    "preview",
+    "visualization",
+    "flowchart",
+    "sequence",
+    "uml"
+  ],
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onLanguage:markdown"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "markdown.previewStyles": [
+      "./media/mermaid.css"
+    ],
+    "markdown.previewScripts": [
+      "./media/mermaid-preview.js"
+    ],
+    "markdown.markdownItPlugins": true
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./ && copy src\\mermaid-plugin.js out\\mermaid-plugin.js",
+    "watch": "tsc -watch -p ./",
+    "package": "vsce package",
+    "publish": "vsce publish"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.74.0",
+    "@types/node": "16.x",
+    "typescript": "^4.9.4",
+    "@vscode/vsce": "^2.22.0"
+  },
+  "dependencies": {
+    "mermaid": "^10.6.1"
+  }
+}

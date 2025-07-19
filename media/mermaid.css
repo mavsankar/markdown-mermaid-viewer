@@ -1,0 +1,47 @@
+/* Mermaid diagram container styling */
+.mermaid-container {
+    text-align: center;
+    margin: 20px 0;
+    padding: 10px;
+    background-color: var(--vscode-editor-background);
+    border: 1px solid var(--vscode-panel-border);
+    border-radius: 4px;
+}
+
+/* Mermaid diagram styling */
+.mermaid {
+    font-family: var(--vscode-font-family);
+    font-size: 14px;
+}
+
+/* Ensure mermaid diagrams are visible in both light and dark themes */
+.mermaid svg {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Dark theme adjustments */
+body[data-vscode-theme-kind="vscode-dark"] .mermaid .node rect,
+body[data-vscode-theme-kind="vscode-dark"] .mermaid .node circle,
+body[data-vscode-theme-kind="vscode-dark"] .mermaid .node ellipse,
+body[data-vscode-theme-kind="vscode-dark"] .mermaid .node polygon {
+    fill: var(--vscode-button-background);
+    stroke: var(--vscode-button-foreground);
+}
+
+body[data-vscode-theme-kind="vscode-dark"] .mermaid .nodeLabel {
+    color: var(--vscode-button-foreground);
+}
+
+/* Light theme adjustments */
+body[data-vscode-theme-kind="vscode-light"] .mermaid .node rect,
+body[data-vscode-theme-kind="vscode-light"] .mermaid .node circle,
+body[data-vscode-theme-kind="vscode-light"] .mermaid .node ellipse,
+body[data-vscode-theme-kind="vscode-light"] .mermaid .node polygon {
+    fill: var(--vscode-button-background);
+    stroke: var(--vscode-button-foreground);
+}
+
+body[data-vscode-theme-kind="vscode-light"] .mermaid .nodeLabel {
+    color: var(--vscode-button-foreground);
+}
