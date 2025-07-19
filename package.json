@@ -2,7 +2,7 @@
   "name": "markdown-mermaid-viewer",
   "displayName": "Markdown Mermaid Viewer",
   "description": "Automatically render Mermaid diagrams in Markdown preview",
-  "version": "0.0.2",
+  "version": "0.0.5",
   "publisher": "SankarMantripragada",
   "license": "MIT",
   "icon": "icon.png",
@@ -14,7 +14,7 @@
   "bugs": {
     "url": "https://github.com/mavsankar/markdown-mermaid-viewer/issues"
   },
-  "homepage": "https://github.com/mavsankar/markdown-mermaid-viewer/vsc-extension-quickstart.md",
+  "homepage": "https://github.com/mavsankar/markdown-mermaid-viewer#readme",
   "keywords": [
     "markdown",
     "mermaid",
@@ -29,7 +29,8 @@
     "vscode": "^1.74.0"
   },
   "categories": [
-    "Other"
+    "Programming Languages",
+    "Visualization"
   ],
   "activationEvents": [
     "onLanguage:markdown"
@@ -55,9 +56,7 @@
     "@types/vscode": "^1.74.0",
     "@types/node": "16.x",
     "typescript": "^4.9.4",
-    "@vscode/vsce": "^2.22.0"
-  },
-  "dependencies": {
+    "@vscode/vsce": "^2.22.0",
     "mermaid": "^10.6.1"
   }
 }
