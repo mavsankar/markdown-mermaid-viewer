@@ -2,7 +2,7 @@
   "name": "markdown-mermaid-viewer",
   "displayName": "Markdown Mermaid Viewer",
   "description": "Automatically render Mermaid diagrams in Markdown preview",
-  "version": "0.0.5",
+  "version": "1.0.0",
   "publisher": "SankarMantripragada",
   "license": "MIT",
   "icon": "icon.png",
@@ -41,14 +41,14 @@
       "./media/mermaid.css"
     ],
     "markdown.previewScripts": [
-      "./node_modules/mermaid/dist/mermaid.min.js",
+      "./media/mermaid.min.js",
       "./media/mermaid-preview.js"
     ],
     "markdown.markdownItPlugins": true
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
-    "compile": "tsc -p ./ && copy src\\mermaid-plugin.js out\\mermaid-plugin.js",
+    "compile": "tsc -p ./ && copy src\\mermaid-plugin.js out\\mermaid-plugin.js && copy node_modules\\mermaid\\dist\\mermaid.min.js media\\mermaid.min.js",
     "watch": "tsc -watch -p ./",
     "package": "vsce package",
     "publish": "vsce publish"
