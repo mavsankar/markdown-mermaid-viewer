@@ -1,4 +1,3 @@
 out
 node_modules
 *.vsix
-media/mermaid.min.js
